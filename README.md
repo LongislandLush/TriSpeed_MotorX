@@ -6,7 +6,7 @@ TriSpeed MotorX 是一個基於 STM32F446RE Nucleo 開發板的小型馬達控�
 
 # 系統架構
 ## Normal Mode 流程圖
-![Normal Mode Flowchart](images/Normal_Mode_Flowchart2.png)
+![Normal Mode Flowchart](images/Normal_Mode_Flowchart_2.png)
 
 
 # 功能說明
