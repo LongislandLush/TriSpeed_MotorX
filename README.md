@@ -5,6 +5,10 @@ TriSpeed MotorX 是一個基於 STM32F446RE Nucleo 開發板的小型馬達控�
 實現了按鈕切換三段轉速、OLED即時顯示當前狀態，並透過 UART 通訊將速度資訊同步給 Arduino，控制 RGB LED 顏色變化。
 
 # 系統架構
+## STM32 X Arduino X UART X PWM X OLED 系統架構圖
+![TriSpeed_MotorX_系統架構圖](images/TriSpeed_MotorX_系統架構圖.png)
+
+
 ## Normal Mode 流程圖
 ![Normal Mode Flowchart](images/Normal_Mode_Flowchart_2.png)
 
