@@ -29,6 +29,8 @@ TriSpeed MotorX 是一個基於 STM32F446RE Nucleo 開發板的小型馬達控�
 3. 接線參考
 請依據 images/ 資料夾內的接線圖進行連接，特別注意以下幾點：
 
+![Wiring Diagram](images/Wiring_Diagram.png)
+
 注意事項
 1. STM32 使用 +3.3V，Arduino 為 +5V, 
 STM32 TX 可直接接 Arduino RX, 
@@ -63,7 +65,6 @@ Arduino TX 請透過電阻分壓後再接 STM32 RX（避免超壓損壞）
 4. OLED 顯示 => 顯示目前模式（Normal / Setting）與轉速狀態（Stop / Weak / Mid / High）
 
 5. UART 傳送至 Arduino 控制 RGB LED => 將目前狀態傳送至 Arduino，控制 RGB 燈顏色變化
-
 
 # 使用技術與工具
 
@@ -110,8 +111,6 @@ Arduino TX 請透過電阻分壓後再接 STM32 RX（避免超壓損壞）
 
 1. Realterm
 
-***所有零件皆為常見開發模組，適合初學者搭建與測試***
-
 **Knowledge:**
 
 1. PWM 控制直流馬達轉速
@@ -131,6 +130,8 @@ Arduino TX 請透過電阻分壓後再接 STM32 RX（避免超壓損壞）
 3. 透過分壓電路解決不同開發板間 UART 通訊的電壓相容問題。
 
 4. 使用 OLED 即時顯示當前模式與馬達狀態，並可透過終端機進行遠端操作與控制。
+
+***所有零件皆為常見開發模組，適合初學者搭建與測試***
 
 # 成果展示
 
