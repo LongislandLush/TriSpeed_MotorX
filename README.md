@@ -30,14 +30,14 @@ TriSpeed MotorX 是一個基於 STM32F446RE Nucleo 開發板的小型馬達控�
 請依據 images/ 資料夾內的接線圖進行連接，特別注意以下幾點：
 
 注意事項
-1. STM32 使用 +3.3V，Arduino 為 +5V
-STM32 TX 可直接接 Arduino RX
+1. STM32 使用 +3.3V，Arduino 為 +5V, 
+STM32 TX 可直接接 Arduino RX, 
 Arduino TX 請透過電阻分壓後再接 STM32 RX（避免超壓損壞）
 
-2. L298N 馬達模組使用 6 顆 AA 電池獨立供電
+2. L298N 馬達模組使用 6 顆 AA 電池獨立供電, 
 電池盒負極、模組負極、STM32 和 Arduino 皆需「共地」
 
-3. 按鈕設有防彈跳電路，LED 有限流電阻
+3. 按鈕設有防彈跳電路，LED 有限流電阻, 
 詳細接線請參見 images/ 接線圖
 
 測試流程建議
