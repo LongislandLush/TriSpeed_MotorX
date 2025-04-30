@@ -23,7 +23,7 @@ TriSpeed MotorX 是一個基於 STM32F446RE Nucleo 開發板的小型馬達控�
    
 2. 開啟Arduino IDE,  可以參考 `Arduino` 資料夾裡的.ino檔並燒錄到Arduino Uno R3.
    
-3. 接線參考images資料夾裡的接線檔案, 並且要注意板子與各模組需要在麵包板上共地.
+3. 接線參考images資料夾裡的接線檔案, 並且要注意兩塊板子, 按鈕與各模組需要在麵包板上共地.
 
 4. STM32是 +3.3V, Arduino是+5V, 所以STM32 TX可以直接插在Arduino RX上, 但是Arduino TX要經過分壓電路, 將電壓降成+3.3V左右再接到STM32 RX上.
 
