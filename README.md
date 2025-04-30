@@ -37,15 +37,15 @@ TriSpeed MotorX 是一個基於 STM32F446RE Nucleo 開發板的小型馬達控�
 
 # 功能說明
 
-按鈕1：短按切換弱速 ➔ 中速 ➔ 高速循環
+1. 三段轉速控制（弱、中、強）=> 按鈕1：短按切換弱速 ➔ 中速 ➔ 高速循環
 
-按鈕2：短按重置為弱速、長按進入設定模式（停止馬達）
+2. 按鍵切換與 Reset 功能 => 按鈕2：短按重置為弱速、長按進入設定模式（停止馬達）
 
-設定模式下，透過終端機（UART）輸入數字指令設定馬達轉速
+3. 設定模式下接受 UART 指令控制 => 設定模式下，透過終端機（UART）輸入數字指令設定馬達轉速
 
-OLED螢幕顯示當前模式（Normal / Setting）與轉速狀態（Stop / Weak / Mid / High）
+4. OLED 顯示目前模式與速度狀態 => OLED螢幕顯示目前模式（Normal / Setting）與轉速狀態（Stop / Weak / Mid / High）
 
-UART同步傳送狀態給Arduino，改變RGB燈顏色
+5. UART 傳送速度至 Arduino 控制 RGB 燈色 => UART同步傳送狀態給Arduino，改變RGB燈顏色
 
 
 # 使用技術與工具
