@@ -33,7 +33,7 @@ TriSpeed MotorX 是一個基於 STM32F446RE Nucleo 開發板的小型馬達控�
    
 7. 確認硬體接線和韌體都燒錄OK, 可以在Normal Mode & Setting Mode下測試按鈕1, 按鈕2 & UART輸入指令下直流馬達, LED & OLED是否如預期.
   
-8. 使用 UART 在Setting Mode 下, 可以用鍵盤傳藉由終端機傳送以下指令 (`0`, `1`, `2`, `3`) 來切換直流馬達速度.
+8. 使用 UART 在Setting Mode 下, 可以用鍵盤藉由終端機傳送以下指令 (`0`, `1`, `2`, `3`) 來切換直流馬達速度.
 
 # 功能說明
 
@@ -88,6 +88,10 @@ UART同步傳送狀態給Arduino，改變RGB燈顏色
 12. Breadboard ×1
 
 13. Jumper Wires: Male-to-Male, Male-to-Female (Depending on connection)
+
+**Software**:
+
+1. Realterm
 
 ***所有零件皆為常見開發模組，適合初學者搭建與測試***
 
