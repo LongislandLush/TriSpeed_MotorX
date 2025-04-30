@@ -19,33 +19,50 @@ TriSpeed MotorX 是一個基於 STM32F446RE Nucleo 開發板的小型馬達控�
 
 # 使用方式
 
-1. 開啟STM32 Cube IDE, 可以參考 `STM32` 資料夾裡的main.c, .ioc檔設定並燒錄到Nucleo F446RE.
-   
-2. 開啟Arduino IDE,  可以參考 `Arduino` 資料夾裡的.ino檔並燒錄到Arduino Uno R3.
-   
-3. 接線參考images資料夾裡的接線檔案, 並且要注意兩塊板子, 按鈕與各模組需要在麵包板上共地.
+環境準備
+1. 開啟 STM32CubeIDE
+參考 STM32/ 資料夾內的 main.c 與 .ioc 設定，燒錄至 Nucleo-F446RE 開發板。
 
-4. STM32是 +3.3V, Arduino是+5V, 所以STM32 TX可以直接插在Arduino RX上, 但是Arduino TX要經過分壓電路, 將電壓降成+3.3V左右再接到STM32 RX上.
+2. 開啟 Arduino IDE
+參考 Arduino/ 資料夾內的 .ino 檔案，燒錄至 Arduino Uno R3。
 
-5. L298N Motor Driver Module有另外接上6-AA電池盒單獨對直流馬達供電, 模組, 電池盒 & 麵包板的負極也需要共地.
-  
-6. 按鈕有做防彈跳電路, LED也有接上限流電阻, 可以參考images資料夾裡的接線檔案.
-   
-7. 確認硬體接線和韌體都燒錄OK, 可以在Normal Mode & Setting Mode下測試按鈕1, 按鈕2 & UART輸入指令下直流馬達, LED & OLED是否如預期.
-  
-8. 使用 UART 在Setting Mode 下, 可以用鍵盤藉由終端機傳送以下指令 (`0`, `1`, `2`, `3`) 來切換直流馬達速度.
+3. 接線參考
+請依據 images/ 資料夾內的接線圖進行連接，特別注意以下幾點：
+
+注意事項
+1. STM32 使用 +3.3V，Arduino 為 +5V
+STM32 TX 可直接接 Arduino RX
+Arduino TX 請透過電阻分壓後再接 STM32 RX（避免超壓損壞）
+
+2. L298N 馬達模組使用 6 顆 AA 電池獨立供電
+電池盒負極、模組負極、STM32 和 Arduino 皆需「共地」
+
+3. 按鈕設有防彈跳電路，LED 有限流電阻
+詳細接線請參見 images/ 接線圖
+
+測試流程建議
+
+1. 確認接線無誤並燒錄韌體
+
+2. 按鈕1 測試三段速度循環是否正確
+
+3. 按鈕2 測試 Reset 功能與Setting Mode切換
+
+4. 使用 UART 終端機測試Setting Mode下的數字指令（0~3）
+
+5. 確認 OLED 顯示與 RGB 燈變化與馬達一致
 
 # 功能說明
 
-1. 三段轉速控制（弱、中、強）=> 按鈕1：短按切換弱速 ➔ 中速 ➔ 高速循環
+1. 三段轉速切換（弱、中、強）=> 按鈕1：短按依序切換 弱 ➔ 中 ➔ 強
 
-2. 按鍵切換與 Reset 功能 => 按鈕2：短按重置為弱速、長按進入設定模式（停止馬達）
+2. Reset 與 Setting Mode => 按鈕2：短按重設為弱速、長按進入設定模式（馬達停止）
 
-3. 設定模式下接受 UART 指令控制 => 設定模式下，透過終端機（UART）輸入數字指令設定馬達轉速
+3. 設定模式 UART 控制 => Setting下，可透過 UART 傳送數字指令 (0, 1, 2, 3) 切換馬達轉速
 
-4. OLED 顯示目前模式與速度狀態 => OLED螢幕顯示目前模式（Normal / Setting）與轉速狀態（Stop / Weak / Mid / High）
+4. OLED 顯示 => 顯示目前模式（Normal / Setting）與轉速狀態（Stop / Weak / Mid / High）
 
-5. UART 傳送速度至 Arduino 控制 RGB 燈色 => UART同步傳送狀態給Arduino，改變RGB燈顏色
+5. UART 傳送至 Arduino 控制 RGB LED => 將目前狀態傳送至 Arduino，控制 RGB 燈顏色變化
 
 
 # 使用技術與工具
