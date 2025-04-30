@@ -19,6 +19,22 @@ TriSpeed MotorX 是一個基於 STM32F446RE Nucleo 開發板的小型馬達控�
 
 # 使用方式
 
+1. 開啟STM32 Cube IDE, 可以參考 `STM32` 資料夾裡的main.c, .ioc檔設定並燒錄到Nucleo F446RE.
+   
+2. 開啟Arduino IDE,  可以參考 `Arduino` 資料夾裡的.ino檔並燒錄到Arduino Uno R3.
+   
+3. 接線參考images資料夾裡的接線檔案, 並且要注意板子與各模組需要在麵包板上共地.
+
+4. STM32是 +3.3V, Arduino是+5V, 所以STM32 TX可以直接插在Arduino RX上, 但是Arduino TX要經過分壓電路, 將電壓降成+3.3V左右再接到STM32 RX上.
+
+5. L298N Motor Driver Module有另外接上6-AA電池盒單獨對直流馬達供電, 模組, 電池盒 & 麵包板的負極也需要共地.
+  
+6. 按鈕有做防彈跳電路, LED也有接上限流電阻, 可以參考images資料夾裡的接線檔案.
+   
+7. 確認硬體接線和韌體都燒錄OK, 可以在Normal Mode & Setting Mode下測試按鈕1, 按鈕2 & UART輸入指令下直流馬達, LED & OLED是否如預期.
+  
+8. 使用 UART 在Setting Mode 下, 可以用鍵盤傳藉由終端機傳送以下指令 (`0`, `1`, `2`, `3`) 來切換直流馬達速度.
+
 # 功能說明
 
 按鈕1：短按切換弱速 ➔ 中速 ➔ 高速循環
