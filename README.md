@@ -147,6 +147,7 @@ Arduino TX 請透過電阻分壓後再接 STM32 RX（避免超壓損壞）
 > OLED 即時顯示控制模式與速度狀態  
 > RGB LED 隨 UART 指令變色同步展示
 
+*實體接線圖*
 ![實體照](images/Wiring_1.jpg)
 
 # 授權
