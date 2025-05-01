@@ -139,6 +139,13 @@ Arduino TX 請透過電阻分壓後再接 STM32 RX（避免超壓損壞）
 
 # 成果展示
 
+點擊下方觀看實際操作影片，展示三段轉速切換、OLED 顯示與 UART 控制 RGB LED：
+
+[![TriSpeed MotorX Demo](images/demo_thumbnail.jpg)](https://youtu.be/fkt2jXf6d6g)
+
+> 實體操作按鈕切換弱 / 中 / 強速  
+> OLED 即時顯示控制模式與速度狀態  
+> RGB LED 隨 UART 指令變色同步展示
 
 # 授權
 ***本專案以 MIT License 授權開源使用。***
