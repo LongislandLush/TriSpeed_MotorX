@@ -1,7 +1,7 @@
 # TriSpeed_MotorX
 STM32-based 3-speed DC motor controller with PWM, UART, and state logic
 
-TriSpeed MotorX 是一個基於 STM32F446RE Nucleo 開發板的小型馬達控制專案，
+TriSpeed MotorX 是一個基於 STM32 Nucleo-F446RE 開發板的小型馬達控制專案，
 實現了按鈕切換三段轉速、OLED即時顯示當前狀態，並透過 UART 通訊將速度資訊同步給 Arduino，控制 RGB LED 顏色變化。
 
 ![STM32](https://img.shields.io/badge/Platform-STM32-blue)
