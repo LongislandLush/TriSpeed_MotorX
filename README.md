@@ -150,5 +150,27 @@ Arduino TX 請透過電阻分壓後再接 STM32 RX（避免超壓損壞）
 實體接線圖
 ![實體照](images/Wiring_1.jpg)
 
+### Issues Resolved
+
+1. **Reset does not restore breathing light in setting mode**  
+**Description:**  
+Pressing the reset button on the STM32 board while in setting mode would leave the Arduino in an incorrect LED state (e.g., flashing white or purple instead of the default warm-colored breathing light).
+
+**Fix:**  
+Sent UART commands `'e'` and `'0'` during STM32 startup to force the Arduino to exit setting mode and restore the default speed level (0).
+
+2. **Speed level 3 occasionally drops to level 1**  
+**Description:**  
+In both Normal Mode and Setting Mode, high speed mode (level 3) would occasionally revert to low speed (level 1).  
+The issue was caused by EMI generated from motor current, which affected the BTN2 GPIO logic — leading to false trigger detection.
+
+**Fix:**  
+1. Investigated both EXTI interrupt and polling-based logic for BTN2 handling. Both approaches can be stable if hardware EMI is controlled properly.  
+2. Physically isolated the STM32 and L298N modules from the conductive metal base using an anti-static bag, preventing ground loop interference and suppressing EMI-induced behavior.
+
+**Verification:**  
+- With anti-static insulation: both interrupt and polling methods passed 2–3 minute stress tests under high-speed mode  
+- Without insulation: polling mode consistently exhibited instability, confirming that the core issue was hardware-induced
+
 # 授權
 ***本專案以 MIT License 授權開源使用。***
