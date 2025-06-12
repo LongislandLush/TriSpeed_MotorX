@@ -132,8 +132,7 @@ void set_motor_speed(uint8_t mode)
     //更新PWM的duty,控制馬達轉速
     __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, duty);
 
-    //只有在非設定模式時，才主動將對應燈號透過 UART 傳給 Arduino
-    //設定模式下由 UART 手動下指令
+    //僅在非設定模式下，主動透過 UART 傳送燈號控制指令給 Arduino（若為設定模式，應由使用者手動下指令控制燈色）
     if (!config_mode) {
         HAL_UART_Transmit(&huart1, (uint8_t *)&rgb_cmd, 1, HAL_MAX_DELAY);
     }
@@ -219,9 +218,6 @@ int main(void)
   //speed_level = 0 對應預設燈號（呼吸燈），需傳送 '0' 給 Arduino
   char rgb_cmd_mode = '0';
   HAL_UART_Transmit(&huart1, (uint8_t *)&rgb_cmd_mode, 1, HAL_MAX_DELAY);
-
-  //終端列印初始化狀態，便於除錯與確認是否傳送成功
-  printf("[INIT] Mode reset: config_mode = %d, speed_level = %d, sent 'e' and '0'\r\n", config_mode, speed_level);
 
   //系統初始狀態處理
   print_banner(); //列印操作說明，建議搭配 PC 端 terminal 使用（TeraTerm / PuTTY / RealTerm）
@@ -683,11 +679,21 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
     //---------- BTN1（PB13）按下事件 ----------
     if (GPIO_Pin == GPIO_PIN_13)
     {
+
+    	if(config_mode) //設定模式下，直接略過 BTN1 中斷處理
+    		return;
+
     	//若距離上次觸發已超過 150ms → 防彈跳
     	if (now - last_btn1_time > 150)  //防彈跳間隔 150ms
         {
-            flag_btn1_pressed = 1; //設定旗標，主程式會依此處理速度切換
-            last_btn1_time = now; //更新上次觸發時間
+
+    		if (HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_13) == GPIO_PIN_RESET){
+
+    			flag_btn1_pressed = 1; //設定旗標，主程式會依此處理速度切換
+
+    			last_btn1_time = now; //更新上次觸發時間
+
+    		}
         }
     }
 
